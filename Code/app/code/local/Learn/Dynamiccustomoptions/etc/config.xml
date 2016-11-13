@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Learn_Dynamiccustomoptions>
+            <version>1.0.0</version>
+        </Learn_Dynamiccustomoptions>
+    </modules>
+	
+    <global>
+        <models>
+            <sales>
+                <rewrite>                    
+                    <quote_item>Learn_Dynamiccustomoptions_Model_Quote_Item</quote_item>
+                </rewrite>
+            </sales>
+        </models>
+    </global>
+    
+    <frontend>
+        <events>
+            <catalog_product_load_after>
+                <observers>
+                    <custom_options>
+                        <type>singleton</type>
+                        <class>Learn_Dynamiccustomoptions_Model_Observer</class>
+                        <method>addCustomOptions</method>
+                    </custom_options>
+                </observers>
+            </catalog_product_load_after>
+            <sales_convert_quote_item_to_order_item>
+                <observers>
+                    <extra_options>
+                        <type>singleton</type>
+                        <class>Learn_Dynamiccustomoptions_Model_Observer</class>
+                        <method>convertQuoteItemToOrderItem</method>
+                    </extra_options>
+                </observers>
+            </sales_convert_quote_item_to_order_item>
+        </events>
+    </frontend>
+</config>   
